@@ -1,8 +1,15 @@
 from django.db import models
 
-# Create your models here.
+
 class User(models.Model):
-    user_name = models.CharField(max_length=12)
-    user_sex = models.BooleanField(default=True)
-    user_age = models.IntegerField(default=20)
-    user_icon = models.ImageField()
+    SEX = (
+        ('M', '男性'),
+        ('F', '女性'),
+        ('S', '保密'),
+    )
+
+    nickname = models.CharField(max_length=32, unique=True)
+    password = models.CharField(max_length=128)
+    age = models.IntegerField(default=18)
+    sex = models.CharField(max_length=8, choices=SEX)
+    icon = models.ImageField()
